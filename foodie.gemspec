@@ -12,7 +12,7 @@ Gem::Specification.new do |spec| # rubocop:disable BlockLength
 
   spec.summary       = 'Write a short summary, because RubyGems requires one.'
   spec.description   = 'Write a longer description or delete this line.'
-  spec.homepage      = 'http://cifronomika.ru'
+  spec.homepage      = 'https://github.com/aishek/foodie'
   spec.license       = 'MIT'
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -21,8 +21,8 @@ Gem::Specification.new do |spec| # rubocop:disable BlockLength
     spec.metadata['allowed_push_host'] = "Set to 'http://mygemserver.com'"
 
     spec.metadata['homepage_uri'] = spec.homepage
-    spec.metadata['source_code_uri'] = 'http://cifronomika.ru'
-    spec.metadata['changelog_uri'] = 'http://cifronomika.ru'
+    spec.metadata['source_code_uri'] = 'https://github.com/aishek/foodie'
+    spec.metadata['changelog_uri'] = 'https://github.com/aishek/foodie/blob/master/CHANGELOG.md'
   else
     raise 'RubyGems 2.0 or newer is required to protect against ' \
       'public gem pushes.'
