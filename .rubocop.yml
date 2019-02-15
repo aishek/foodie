@@ -3,3 +3,10 @@ AllCops:
   Exclude:
     - foodie.gemspec
     - vendor/bundle/**/*
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Metrics/MethodLength:
+  Exclude:
+    - test/**/*

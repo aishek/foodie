@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'bundler/setup'
+require 'foodie'
+require 'awesome_print'
+
+ip = ARGV.first
+ap Foodie::GetGeo.call(ip)

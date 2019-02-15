@@ -6,8 +6,4 @@ class FoodieTest < Minitest::Test
   def test_that_it_has_a_version_number
     assert { !::Foodie::VERSION.nil? }
   end
-
-  def test_it_does_something_useful
-    assert { true }
-  end
 end

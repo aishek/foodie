@@ -2,11 +2,13 @@ PATH
   remote: .
   specs:
     foodie (0.1.0)
+      awesome_print
 
 GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.0)
+    awesome_print (1.8.0)
     jaro_winkler (1.5.2)
     minitest (5.11.3)
     minitest-power_assert (0.3.0)
