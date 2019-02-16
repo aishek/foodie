@@ -13,6 +13,11 @@ class Foodie::Geo
   end
 
   def get_details_by_ip(ip)
-    @provider.details(ip)
+    @provider.call(ip) do |f|
+      response = f.read
+      JSON.parse(response).tap do |result|
+        raise Foodie::Geo::GetDetailsFailedError if result['status'] == 'fail'
+      end
+    end
   end
 end

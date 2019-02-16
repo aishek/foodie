@@ -5,16 +5,14 @@ require 'json'
 require 'foodie/geo/get_details_failed_error'
 
 #
-# ip-api.com provider for Foodie::GetGeo
+# ip-api.com provider for Foodie::Geo
 #
 module Foodie::Geo::IpApiProvider
   class << self
-    def details(ip = nil)
-      open("http://ip-api.com/json/#{ip}") do |f|
-        response = f.read
-        JSON.parse(response).tap do |result|
-          raise Foodie::Geo::GetDetailsFailedError if result['status'] == 'fail'
-        end
+    def call(ip)
+      address = "http://ip-api.com/json/#{ip}"
+      open(address) do |f| # rubocop:disable Security/Open
+        yield f
       end
     end
   end
