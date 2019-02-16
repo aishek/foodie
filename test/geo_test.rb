@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 require 'test_helper'
-require 'get_geo/test_provider'
+require 'geo/test_provider'
 
-class GetGeoTest < Minitest::Test
+class GeoTest < Minitest::Test
   def subject(ip = nil)
-    Foodie::GetGeo.new(Foodie::GetGeo::TestProvider).details(ip)
+    Foodie::Geo.new(Foodie::Geo::TestProvider).get_details_by_ip(ip)
   end
 
   def test_it_respond_with_ip_info_on_ip_passed
@@ -51,12 +51,8 @@ class GetGeoTest < Minitest::Test
   end
 
   def test_it_respond_with_error_info_on_not_an_ip_passed
-    assert do
-      subject('wtf') == {
-        'message' => 'invalid query',
-        'query' => 'wtf',
-        'status' => 'fail'
-      }
+    assert_raises Foodie::Geo::GetDetailsFailedError do
+      subject('wtf')
     end
   end
 end

@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 require 'ipaddr'
+require 'foodie/geo/get_details_failed_error'
 
-module Foodie::GetGeo::TestProvider
+module Foodie::Geo::TestProvider
   class << self
     def details(ip = nil)
       case ip
@@ -25,11 +26,7 @@ module Foodie::GetGeo::TestProvider
     end
 
     def error
-      {
-        'message' => 'invalid query',
-        'query' => 'wtf',
-        'status' => 'fail'
-      }
+      raise Foodie::Geo::GetDetailsFailedError
     end
 
     def self_info

@@ -6,4 +6,4 @@ require 'foodie'
 require 'awesome_print'
 
 ip = ARGV.first
-ap Foodie::GetGeo.new.details(ip)
+ap Foodie::Geo.new.get_details_by_ip(ip)
