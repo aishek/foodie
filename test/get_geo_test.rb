@@ -5,7 +5,7 @@ require 'get_geo/test_provider'
 
 class GetGeoTest < Minitest::Test
   def subject(ip = nil)
-    Foodie::GetGeo.details(ip: ip, provider: Foodie::GetGeo::TestProvider)
+    Foodie::GetGeo.new(Foodie::GetGeo::TestProvider).details(ip)
   end
 
   def test_it_respond_with_ip_info_on_ip_passed
