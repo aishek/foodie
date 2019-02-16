@@ -9,10 +9,13 @@ require 'foodie/geo/get_details_failed_error'
 #
 module Foodie::Geo::IpApiProvider
   class << self
-    def call(ip)
+    def get_details_by_ip(ip)
       address = "http://ip-api.com/json/#{ip}"
-      open(address) do |f| # rubocop:disable Security/Open
-        yield f
+      uri = URI.parse(address)
+
+      open(uri) do |f| # rubocop:disable Security/Open
+        response = f.read
+        JSON.parse(response)
       end
     end
   end

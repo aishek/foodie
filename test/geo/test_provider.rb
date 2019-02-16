@@ -4,16 +4,8 @@ require 'ipaddr'
 require 'foodie/geo/get_details_failed_error'
 
 module Foodie::Geo::TestProvider
-  Result = Struct.new(:read)
-
   class << self
-    def call(ip = nil)
-      yield(result(ip))
-    end
-
-    private
-
-    def result(ip)
+    def get_details_by_ip(ip)
       case ip
       when '134.234.3.2' then remote1_info
       when nil then self_info
@@ -24,6 +16,8 @@ module Foodie::Geo::TestProvider
       end
     end
 
+    private
+
     def ipv4?(ip)
       IPAddr.new(ip)
       true
@@ -32,11 +26,15 @@ module Foodie::Geo::TestProvider
     end
 
     def error
-      Result.new('{"message":"invalid query","query":"www","status":"fail"}')
+      {
+        'message' => 'invalid query',
+        'query' => 'www',
+        'status' => 'fail'
+      }
     end
 
     def self_info
-      Result.new({
+      {
         'as' => 'AS12714 Net By Net Holding LLC',
         'city' => 'Tver',
         'country' => 'Russia',
@@ -51,11 +49,11 @@ module Foodie::Geo::TestProvider
         'status' => 'success',
         'timezone' => 'Europe/Moscow',
         'zip' => '170042'
-      }.to_json)
+      }
     end
 
     def remote1_info
-      Result.new({
+      {
         'as' => 'AS1586 DoD Network Information Center',
         'city' => 'Sierra Vista',
         'country' => 'United States',
@@ -70,7 +68,7 @@ module Foodie::Geo::TestProvider
         'status' => 'success',
         'timezone' => 'America/Phoenix',
         'zip' => '85613'
-      }.to_json)
+      }
     end
   end
 end
