@@ -4,14 +4,14 @@ require 'ipaddr'
 
 module Foodie::GetGeo::TestProvider
   class << self
-    def call(ip = nil)
+    def details(ip = nil)
       case ip
       when '134.234.3.2' then remote1_info
       when nil then self_info
       else
         return error unless ipv4?(ip)
 
-        raise NotImplemented
+        raise NotImplementedError
       end
     end
 

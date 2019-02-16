@@ -8,7 +8,7 @@ require 'json'
 #
 module Foodie::GetGeo::IpApiProvider
   class << self
-    def call(ip = nil)
+    def details(ip = nil)
       open("http://ip-api.com/json/#{ip}") do |f|
         response = f.read
         JSON.parse(response)
